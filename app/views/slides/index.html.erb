@@ -1,0 +1,22 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Slides</h1>
+
+<table>
+  <tbody>
+    <% @slides.each do |slide| %>
+      <tr>
+        <td><img src='<%= slide.image_url %>'/></td>
+        <td><%= slide.title %></td>
+        <td><%= slide.page_number %></td>
+        <td><%= link_to 'Show', presentation_slide_path(@presentation, slide) %></td>
+        <td><%= link_to 'Edit', edit_presentation_slide_path(@presentation, slide) %></td>
+        <td><%= link_to 'Destroy', presentation_slide_path(@presentation, slide), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Slide', new_presentation_slide_path %>

@@ -1,0 +1,14 @@
+<h1><%= @presentation.title %></h1>
+
+<% @presentation.slides.each do |slide| %>
+  <div>
+    <h2><%= slide.title %></h2>
+    <img src="<%= slide.image_url %>"/>
+  </div>
+<% end %>
+
+<div>
+  <button id="previous-slide">Previous</button>
+  <span id="page-number"></span>
+  <button id="next-slide">Next</button>
+</div>
