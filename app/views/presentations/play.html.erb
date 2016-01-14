@@ -12,8 +12,10 @@
     $('body').keypress(function (event) {
       current += 1;
       if(current >= $('.slide').length) current = 0;
-      $('.slide').hide();
-      $('.slide:eq(' + current + ')').show();
+      $('.slide').fadeOut(300);
+      window.setTimeout(function () {
+        $('.slide:eq(' + current + ')').fadeIn();
+      }, 300);
     });
   })
 </script>
