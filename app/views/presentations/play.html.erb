@@ -1,14 +1,19 @@
-<h1><%= @presentation.title %></h1>
-
-<% @presentation.slides.each do |slide| %>
-  <div>
-    <h2><%= slide.title %></h2>
-    <img src="<%= slide.image_url %>"/>
+<% @presentation.slides.order(:page_number).each do |slide| %>
+  <div class="slide full-width full-height">
+    <img class="full-width full-height" src="<%= slide.image_url %>"/>
   </div>
 <% end %>
 
-<div>
-  <button id="previous-slide">Previous</button>
-  <span id="page-number"></span>
-  <button id="next-slide">Next</button>
-</div>
+<script type="text/javascript">
+  $(function () {
+    $('.slide').hide();
+    $('.slide').first().show();
+    current = 0;
+    $('body').keypress(function (event) {
+      current += 1;
+      if(current >= $('.slide').length) current = 0;
+      $('.slide').hide();
+      $('.slide:eq(' + current + ')').show();
+    });
+  })
+</script>
